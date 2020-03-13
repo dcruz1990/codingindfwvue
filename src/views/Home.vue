@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class>
     <Login />
   </div>
 </template>
@@ -10,8 +10,19 @@ import Login from '@/components/Login.vue'
 
 export default {
   name: 'Home',
+  props: {
+    toggleLog: Boolean
+  },
+  data () {
+
+  },
   components: {
     Login
+  },
+  methods: {
+    toggleLogin (toggleLogin) {
+      return !toggleLogin
+    }
   }
 }
 </script>

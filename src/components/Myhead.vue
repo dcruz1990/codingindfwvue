@@ -25,7 +25,7 @@
             <b-dropdown-item href="#">FA</b-dropdown-item>
           </b-nav-item-dropdown>
 
-          <b-nav-item-dropdown right>
+          <b-nav-item-dropdown right v-if="isLoggedin">
             <!-- Using 'button-content' slot -->
             <template v-slot:button-content>
               <em>User</em>

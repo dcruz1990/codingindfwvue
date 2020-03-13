@@ -7,9 +7,10 @@
 
 <script>
 import Myhead from '@/components/Myhead.vue'
+
 export default {
   name: 'App',
-  components: Myhead
+  components: { Myhead }
 }
 </script>
 
