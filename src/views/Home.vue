@@ -1,6 +1,6 @@
 <template>
   <div class>
-    <Login />
+    <Login v-if="islogedOff" class="loginbox" />
   </div>
 </template>
 
@@ -11,18 +11,23 @@ import Login from '@/components/Login.vue'
 export default {
   name: 'Home',
   props: {
-    toggleLog: Boolean
   },
   data () {
-
+    return {
+      islogedOff: true
+    }
   },
   components: {
     Login
   },
   methods: {
-    toggleLogin (toggleLogin) {
-      return !toggleLogin
-    }
   }
 }
 </script>
+
+<style >
+.loginbox {
+  margin-top: 20px;
+  margin-left: 200px;
+}
+</style>
