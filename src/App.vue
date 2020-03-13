@@ -1,12 +1,17 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <Myhead />
+    <router-view></router-view>
   </div>
 </template>
+
+<script>
+import Myhead from '@/components/Myhead.vue'
+export default {
+  name: 'App',
+  components: Myhead
+}
+</script>
 
 <style lang="scss">
 #app {
