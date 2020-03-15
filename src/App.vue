@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-  <Header />
+  <div id="app" class="grad">
+  <Header :islogedOff="islogedOff" />
     <router-view></router-view>
   </div>
 </template>
@@ -26,13 +26,13 @@ export default {
 #nav {
   padding: 30px;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+a {
+  font-weight: bold;
+  color: #2c3e50;
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  &.router-link-exact-active {
+    color: #42b983;
   }
+}
 }
 </style>
