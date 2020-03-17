@@ -1,24 +1,23 @@
 <template>
   <div class>
-    <Login v-if="islogedOff" class="loginbox" />
+    <Login v-if="this.$store.state.isAuthenticated" class="loginbox" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Login from '@/components/Login.vue'
+import mapState from 'vuex'
 
 export default {
   name: 'Home',
   props: {
   },
-  data () {
-    return {
-      islogedOff: true
-    }
-  },
   components: {
     Login
+  },
+  computed: {
+    ...mapState(['user'])
   },
   methods: {
   }
