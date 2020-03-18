@@ -13,7 +13,7 @@
             <div>
                 <b-alert v-if="error"
                                 fade
-                :show = "dismissCountDown" dismissible variant="danger">You must fill an email and password!!</b-alert>
+                :show = "dismissCountDown" dismissible variant="danger">aaa{{ error }}</b-alert>
             </div>
             <p class="lead">Enter your email:</p>
             <b-form-input type="email" v-model="auth.email" placeholder="Enter your name"></b-form-input>
@@ -37,7 +37,7 @@ export default {
   props: {
     isAuthenticated: Boolean,
     user: Object,
-    error: Boolean
+    error: {}
   },
   data () {
     return {
@@ -52,7 +52,6 @@ export default {
         this.$store.dispatch('Login', this.auth)
         this.auth.password = ''
         this.auth.email = ''
-        console.log('asdasdasd')
       } else {
         this.dismissCountDown = this.dismissSecs
         this.error = true

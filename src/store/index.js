@@ -7,9 +7,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isLoading: true,
+    isLoading: false,
     user: {},
-    isAuthenticated: false
+    isAuthenticated: false,
+    error: {
+      errorType: '',
+      errorFlag: false
+    }
   },
   mutations: {
     setLoadingStatus (state, val) {
@@ -20,6 +24,10 @@ export default new Vuex.Store({
     },
     setIsAuthenticate (state, value) {
       state.isAuthenticated = value
+    },
+    setError (state, value) {
+      state.error.errorType = value.type
+      state.error.errorFlag = value.flag
     }
   },
   actions: {
@@ -32,6 +40,7 @@ export default new Vuex.Store({
           context.commit('setIsAuthenticate', true)
         } else {
           context.commit('setIsAuthenticate', false)
+          // context.commit('setBadCredentials', true)
         }
         return response.json()
       }).then((data) => {
@@ -39,6 +48,11 @@ export default new Vuex.Store({
         context.commit('setLoadingStatus', false)
         console.log(this.data)
       }).catch((err) => {
+        const error = {
+          type: err,
+          flag: true
+        }
+        context.commit('setError', error)
         console.log(err)
       })
     }
