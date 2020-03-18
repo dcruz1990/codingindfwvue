@@ -1,13 +1,13 @@
 <template>
   <div class>
-    <Login v-if="this.$store.state.isAuthenticated" class="loginbox" />
+    <Login v-if="isAuthenticated" class="loginbox" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Login from '@/components/Login.vue'
-import mapState from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Home',
@@ -17,7 +17,7 @@ export default {
     Login
   },
   computed: {
-    ...mapState(['user'])
+    ...mapState(['user', 'isLoading', 'isAuthenticated'])
   },
   methods: {
   }

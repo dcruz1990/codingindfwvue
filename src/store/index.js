@@ -24,8 +24,9 @@ export default new Vuex.Store({
   },
   actions: {
     Login (context, userdata) {
+      const baseUrl = 'http://localhost:5050/api/'
       const header = { 'Content-Type': 'application/json' }
-      fetch('http://localhost:5050/api/Auth/login', { method: 'post', headers: header, body: JSON.stringify(userdata) }).then((response) => {
+      fetch(baseUrl + 'Auth/login', { method: 'post', headers: header, body: JSON.stringify(userdata) }).then((response) => {
         context.commit('setLoadingStatus', true)
         if (response.status === 200) {
           context.commit('setIsAuthenticate', true)

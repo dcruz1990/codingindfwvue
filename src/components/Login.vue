@@ -10,6 +10,11 @@
           align="center"
         >
           <b-card-text>
+            <div>
+                <b-alert v-if="error"
+                                fade
+                :show = "dismissCountDown" dismissible variant="danger">You must fill an email and password!!</b-alert>
+            </div>
             <p class="lead">Enter your email:</p>
             <b-form-input type="email" v-model="auth.email" placeholder="Enter your name"></b-form-input>
             <p class="lead">Enter your password:</p>
@@ -17,7 +22,6 @@
             <br />
             <b-button
               @click.prevent="login"
-              @click="$emit('islogedOff', false)"
               variant="primary"
             >Login</b-button>
           </b-card-text>
@@ -31,17 +35,28 @@
 export default {
   name: 'Login',
   props: {
-    islogedOff: Boolean,
-    user: Object
+    isAuthenticated: Boolean,
+    user: Object,
+    error: Boolean
   },
   data () {
     return {
-      auth: { email: '', password: '' }
+      auth: { email: '', password: '' },
+      dismissSecs: 5,
+      dismissCountDown: 0
     }
   },
   methods: {
     login () {
-      this.$store.dispatch('Login', this.auth)
+      if (this.auth.password.length !== 0 && this.auth.email.length !== 0) {
+        this.$store.dispatch('Login', this.auth)
+        this.auth.password = ''
+        this.auth.email = ''
+        console.log('asdasdasd')
+      } else {
+        this.dismissCountDown = this.dismissSecs
+        this.error = true
+      }
     }
   }
 }

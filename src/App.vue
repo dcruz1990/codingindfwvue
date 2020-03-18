@@ -1,16 +1,20 @@
 <template>
   <div id="app" class="grad">
-  <Header :islogedOff="islogedOff" />
+  <Header />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'App',
-  components: { Header }
+  components: { Header },
+  computed: {
+    ...mapState(['user', 'isLoading', 'isAuthenticated'])
+  }
 }
 </script>
 
