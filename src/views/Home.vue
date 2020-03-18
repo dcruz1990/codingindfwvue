@@ -1,12 +1,15 @@
 <template>
   <div class>
     <Login v-if="!isAuthenticated" class="loginbox" />
+    <Sidebar v-if="isAuthenticated" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Login from '@/components/Login.vue'
+import Sidebar from '@/components/Sidebar.vue'
+
 import { mapState } from 'vuex'
 
 export default {
@@ -14,7 +17,8 @@ export default {
   props: {
   },
   components: {
-    Login
+    Login,
+    Sidebar
   },
   computed: {
     ...mapState(['user', 'isLoading', 'isAuthenticated'])
