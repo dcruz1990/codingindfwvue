@@ -7,9 +7,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isLoading: Boolean,
-    user: Object,
-    isAuthenticated: Boolean
+    isLoading: true,
+    user: {},
+    isAuthenticated: false
   },
   mutations: {
     setLoadingStatus (state, val) {
@@ -44,5 +44,10 @@ export default new Vuex.Store({
     }
   },
   modules: {
+  },
+  getters: {
+    getIsAuthenticated (state) {
+      return state.isAuthenticated
+    }
   }
 })

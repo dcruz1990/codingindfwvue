@@ -1,6 +1,6 @@
 <template>
   <div class>
-    <Login v-if="isAuthenticated" class="loginbox" />
+    <Login v-if="!isAuthenticated" class="loginbox" />
   </div>
 </template>
 
@@ -18,8 +18,6 @@ export default {
   },
   computed: {
     ...mapState(['user', 'isLoading', 'isAuthenticated'])
-  },
-  methods: {
   }
 }
 </script>

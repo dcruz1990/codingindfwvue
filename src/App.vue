@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="grad">
-  <Header />
+  <Header :isAuthenticated = "isAuthenticated" :user = "user"/>
     <router-view></router-view>
   </div>
 </template>

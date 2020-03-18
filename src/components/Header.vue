@@ -28,7 +28,7 @@
           <b-nav-item-dropdown right v-if="isAuthenticated">
             <!-- Using 'button-content' slot -->
             <template v-slot:button-content>
-              <em>User</em>
+              <em>User: {{ user.user.fullName }}</em>
             </template>
             <b-dropdown-item href="#">Profile of </b-dropdown-item>
             <b-dropdown-item href="#">Sign Out</b-dropdown-item>
@@ -40,12 +40,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
   name: 'Header',
-  computed: {
-    ...mapState(['user', 'isLoading', 'isAuthenticated'])
+  props: {
+    isAuthenticated: Boolean,
+    user: Object
   }
 }
 </script>
