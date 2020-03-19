@@ -11,9 +11,7 @@
         >
           <b-card-text>
             <div>
-                <b-alert v-if="error"
-                                fade
-                :show = "dismissCountDown" dismissible variant="danger">aaa{{ error }}</b-alert>
+                <b-alert v-if="error.errorFlag" fade :show = "dismissCountDown" dismissible variant="danger">{{ error.errorType }}</b-alert>
             </div>
             <p class="lead">Enter your email:</p>
             <b-form-input type="email" v-model="auth.email" placeholder="Enter your name"></b-form-input>
@@ -37,13 +35,13 @@ export default {
   props: {
     isAuthenticated: Boolean,
     user: Object,
-    error: {}
+    error: Object
   },
   data () {
     return {
       auth: { email: '', password: '' },
       dismissSecs: 5,
-      dismissCountDown: 0
+      dismissCountDown: 5
     }
   },
   methods: {
