@@ -1,6 +1,6 @@
 <template>
   <div class>
-    <Login v-if="!isAuthenticated" class="loginbox" />
+    <Login v-if="!isAuthenticated" class="loginbox" :error = "error" />
     <Sidebar v-if="isAuthenticated" />
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
     Sidebar
   },
   computed: {
-    ...mapState(['user', 'isLoading', 'isAuthenticated'])
+    ...mapState(['user', 'isLoading', 'isAuthenticated', 'error'])
   }
 }
 </script>

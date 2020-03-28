@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="grad">
-  <Header :isAuthenticated = "isAuthenticated" :user = "user" :error = "error"/>
+  <Header :isAuthenticated = "isAuthenticated" :user = "user" />
     <router-view></router-view>
   </div>
 </template>
@@ -13,7 +13,7 @@ export default {
   name: 'App',
   components: { Header },
   computed: {
-    ...mapState(['user', 'isLoading', 'isAuthenticated', 'error'])
+    ...mapState(['user', 'isLoading', 'isAuthenticated'])
   }
 }
 </script>

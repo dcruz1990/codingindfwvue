@@ -11,12 +11,11 @@
         >
           <b-card-text>
             <div>
-                <b-alert v-if="error"
-                                fade
-                :show = "dismissCountDown" dismissible variant="danger">aaa{{ error }}</b-alert>
+                <b-alert fade v-model = "error.errorFlag" dismissible variant="danger">{{ error.errorType }}</b-alert>
+                <b-alert fade v-model = "myerror" dismissible variant="danger">You must insert something!!</b-alert>
             </div>
             <p class="lead">Enter your email:</p>
-            <b-form-input type="email" v-model="auth.email" placeholder="Enter your name"></b-form-input>
+            <b-form-input type="email" v-model="auth.email" placeholder="Enter your email"></b-form-input>
             <p class="lead">Enter your password:</p>
             <b-form-input type="password" v-model="auth.password" placeholder="Enter your password"></b-form-input>
             <br />
@@ -32,19 +31,25 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'Login',
   props: {
     isAuthenticated: Boolean,
     user: Object,
-    error: {}
+    error: Object
   },
   data () {
     return {
       auth: { email: '', password: '' },
       dismissSecs: 5,
-      dismissCountDown: 0
+      dismissCountDown: 5,
+      myerror: false
     }
+  },
+  computed: {
+    ...mapState(['error'])
   },
   methods: {
     login () {
@@ -53,8 +58,7 @@ export default {
         this.auth.password = ''
         this.auth.email = ''
       } else {
-        this.dismissCountDown = this.dismissSecs
-        this.error = true
+        this.myerror = true
       }
     }
   }

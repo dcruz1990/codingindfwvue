@@ -38,8 +38,13 @@ export default new Vuex.Store({
         context.commit('setLoadingStatus', true)
         if (response.status === 200) {
           context.commit('setIsAuthenticate', true)
-        } else {
+        } else if (response.status === 401) {
           context.commit('setIsAuthenticate', false)
+          const Unauthorized = {
+            type: 'Wrong username or password, please verify!',
+            flag: true
+          }
+          context.commit('setError', Unauthorized)
           // context.commit('setBadCredentials', true)
         }
         return response.json()
