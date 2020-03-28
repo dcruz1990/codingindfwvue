@@ -5,7 +5,7 @@
         <b-card
           border-variant="primary"
           header="Please, log into admin control panel"
-          header-bg-variant="primary" asdasd
+          header-bg-variant="primary"
           header-text-variant="light"
           align="center"
         >
